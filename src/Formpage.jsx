@@ -13,22 +13,23 @@ export default function Formpage() {
     const res = await axios
       .post("https://productapi.vercel.app/api/product", {
         title: data.title,
-        size: "m",
+        size: data.size,
         price: Number(data.price),
         description: data.description,
         image: data.image,
-        category: data.category,
-      }).then(alert("product successfully added"))
+        category: string_to_array(data.category),
+      })
+      .then(alert("product successfully added"))
       .catch((err) => console.log(err));
     if (res.status !== 200) {
-      return <div>
-
-        "Request Rejected"
-      </div>
+      return <div>"Request Rejected"</div>;
     }
     const resData = await res.data;
-   
+
     return resData;
+  };
+  const string_to_array = (str) => {
+    return str.trim().split(" ");
   };
   const handleChange = (e) => {
     setformdata((prevState) => ({
