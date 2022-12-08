@@ -31,8 +31,10 @@ function App() {
               <div className="my-auto">
                 <div>{e.title}</div>
                 <div>${e.price}</div>
-                {e.category.map((e) => (
-                  <div className=" bg-yellow-300 m-2">{e}</div>
+                {e.category.map((e, i) => (
+                  <div key={i} className=" bg-yellow-300 m-2">
+                    {e}
+                  </div>
                 ))}
               </div>
               <button
