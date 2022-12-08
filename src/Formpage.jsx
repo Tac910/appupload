@@ -51,10 +51,10 @@ export default function Formpage() {
   return (
     <div className="flex gap-4 flex-col w-[500px]  ">
       <form className="space-y-5    mx-auto">
-        <div className="gap-3 bg-white  flex">
+        <div className="gap-3   flex">
           <div>Name</div>
           <input
-            className="bg-white  border-2 border-black "
+            className="  border-2 border-black "
             value={formdata.title}
             onChange={handleChange}
             name="title"
@@ -63,7 +63,7 @@ export default function Formpage() {
         <div className="gap-3 flex">
           <div>price</div>
           <input
-            className="bg-white  border-2 border-black "
+            className="  border-2 border-black "
             value={formdata.price}
             type="number"
             onChange={handleChange}
@@ -73,7 +73,7 @@ export default function Formpage() {
         <div className="gap-3 flex">
           <div>description</div>
           <input
-            className="bg-white  border-2 border-black "
+            className="  border-2 border-black "
             value={formdata.description}
             onChange={handleChange}
             name="description"
@@ -82,7 +82,7 @@ export default function Formpage() {
         <div className="gap-3 flex">
           <div>size</div>
           <input
-            className="bg-white  border-2 border-black "
+            className="  border-2 border-black "
             value={formdata.size}
             onChange={handleChange}
             name="size"
@@ -91,7 +91,7 @@ export default function Formpage() {
         <div className="gap-3 flex">
           <div>image</div>
           <input
-            className="bg-white  border-2 border-black "
+            className="  border-2 border-black "
             value={formdata.image}
             onChange={handleChange}
             name="image"
@@ -100,7 +100,7 @@ export default function Formpage() {
         <div className="gap-3 flex">
           <div>category</div>
           <input
-            className="bg-white  border-2 border-black "
+            className="  border-2 border-black "
             value={formdata.category}
             onChange={handleChange}
             name="category"
