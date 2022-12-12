@@ -70,31 +70,31 @@ const [imageloader, setimageLoader] = useState('Import An Image');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex max-w-[300px] lg:max-w-full flex-col space-y-3">
+    <form onSubmit={handleSubmit} className="flex max-w-[320px] text-md lg:max-w-full flex-col space-y-3">
       {error && <div className="error  bg-red-500 text-white rounded-lg  py-3">{error} !</div>}
       {success && <div className="success bg-green-500 py-3 rounded-lg text-white">{success}</div>}
       <label>
-        Product Title:
+         Title:
         <input type="text" className="border rounded mx-3" value={productName} onChange={(event) => setProductName(event.target.value)} />
       </label>
       <label>
-        Product Description:
+         Description:
         <input type="text" className="border rounded mx-3" value={productDescription} onChange={(event) => setProductDescription(event.target.value)} />
       </label>
       <label>
-        Product Price:
+         Price:
         <input type="number" className="border rounded mx-3" value={productPrice} onChange={(event) => setProductPrice(event.target.value)} />
       </label>
       <label>
-        Product Sizes:
+         Sizes:
         <input type="text" className="border rounded mx-3" value={productSize} onChange={(event) => setProductSize(event.target.value)} />
       </label>
       <label>
-        Product Categories:
+         Categories:
         <input type="text" className="border rounded mx-3 " value={productCategory} onChange={(event) => setProductCategory(event.target.value)} />
       </label>
-      <div className="gap-3 flex">
-        <input type="file" className=" py-2 rounded mx-3" onChange={(e) => setImage(e.target.files[0])}></input>
+      <div className="gap-3 ">
+        <input type="file" className=" my-auto py-2 rounded mx-auto" onChange={(e) => setImage(e.target.files[0])}></input>
         <button className="bg-green-500 " onClick={uploadImage}>
           Upload the Image
         </button>{' '}
