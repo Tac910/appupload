@@ -1,51 +1,52 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import "./App.css";
-import Formpage from "./Formpage";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import './App.css';
+import ProductUploadForm from './ProductUpload';
 
+function getData(setproducts) {
+  axios.get('https://productapi.vercel.app/api/product').then((response) => {
+    setproducts(response.data);
+  });
+}
 function App() {
   const [products, setproducts] = useState([]);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   useEffect(() => {
-    axios.get("https://productapi.vercel.app/api/product").then((response) => {
-      setproducts(response.data);
-    });
-  }, []);
+    getData(setproducts);
+  }, [products]);
   async function handledelete(id) {
-    console.log(`https://productapi.vercel.app/api/product/${id}`);
-    axios
-      .delete(`https://productapi.vercel.app/api/product/${id}`)
-      .then((res) => {
-        console.log(res.data);
-      });
+    axios.delete(`https://productapi.vercel.app/api/product/${id}`).then((res) => {
+      console.log(res.data);
+      setError(res.data);
+    });
   }
   return (
     <>
       <div>
-        <Formpage />
+        <ProductUploadForm setError={setError} error={error} success={success} setSuccess={setSuccess} />
       </div>
+
       <div className="flex flex-wrap gap-3">
-        {products.map((e) => (
-          <div className="w-[200px] border-2 border-white" key={e._id}>
-            <img src={e.image} alt="" />
-            <div className="flex w-10/12 mx-auto justify-between">
-              <div className="my-auto">
-                <div>{e.title}</div>
-                <div>${e.price}</div>
-                {e.category.map((e, i) => (
-                  <div key={i} className=" bg-yellow-300 m-2">
-                    {e}
-                  </div>
+        {products &&
+          products.map((product) => (
+            <div className="w-[300px] rounded overflow-hidden text-gray-800 bg-white shadow-lg">
+              <button onClick={() => handledelete(product._id)} className="absolute  bg-white">
+                remove
+              </button>
+              <img className="w-full" src={product.image} alt="Sunset in the mountains" />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{product.title}</div>
+                <div className="text-md mb-2">${product.price}</div>
+                <p className="text-gray-700 text-base">{product.description} </p>
+              </div>
+              <div className="px-6 py-2">
+                {product.category.map((e) => (
+                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{e}</span>
                 ))}
               </div>
-              <button
-                className="bg-white text-black py-1 rounded-full px-2  m-4"
-                onClick={() => handledelete(e._id)}
-              >
-                x
-              </button>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </>
   );
