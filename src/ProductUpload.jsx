@@ -8,11 +8,11 @@ const ProductUploadForm = ({ setError, setSuccess, error, success }) => {
   const [productSize, setProductSize] = useState('');
   const [productImage, setProductImage] = useState('');
   const [productCategory, setProductCategory] = useState('');
-
+const [imageloader, setimageLoader] = useState('Import An Image');
   const [image, setImage] = useState('');
   const [url, setUrl] = useState('');
   const uploadImage = (e) => {
-    ``;
+    setimageLoader('Loading...');
     e.preventDefault();
     const data = new FormData();
     data.append('file', image);
@@ -70,7 +70,7 @@ const ProductUploadForm = ({ setError, setSuccess, error, success }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
+    <form onSubmit={handleSubmit} className="flex  w-[400px] flex-col space-y-3">
       {error && <div className="error  bg-red-500 text-white rounded-lg  py-3">{error} !</div>}
       {success && <div className="success bg-green-500 py-3 rounded-lg text-white">{success}</div>}
       <label>
@@ -86,8 +86,12 @@ const ProductUploadForm = ({ setError, setSuccess, error, success }) => {
         <input type="number" className="border rounded mx-3" value={productPrice} onChange={(event) => setProductPrice(event.target.value)} />
       </label>
       <label>
-        Product Size:
+        Product Sizes:
         <input type="text" className="border rounded mx-3" value={productSize} onChange={(event) => setProductSize(event.target.value)} />
+      </label>
+      <label>
+        Product Categories:
+        <input type="text" className="border rounded mx-3 " value={productCategory} onChange={(event) => setProductCategory(event.target.value)} />
       </label>
       <div className="gap-3 flex">
         <input type="file" className=" py-2 rounded mx-3" onChange={(e) => setImage(e.target.files[0])}></input>
@@ -95,11 +99,12 @@ const ProductUploadForm = ({ setError, setSuccess, error, success }) => {
           Upload the Image
         </button>{' '}
       </div>
-      <img src={productImage} />
-      <label>
-        Product Category:
-        <input type="text" className="border rounded mx-3 " value={productCategory} onChange={(event) => setProductCategory(event.target.value)} />
-      </label>
+      {
+
+        productImage ?
+        <img src={productImage} /> : <div>{imageloader}</div>
+      }
+     
 
       <button className="bg-red-500" type="submit">
         Upload Product
