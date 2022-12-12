@@ -70,7 +70,7 @@ const [imageloader, setimageLoader] = useState('Import An Image');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex  w-[400px] flex-col space-y-3">
+    <form onSubmit={handleSubmit} className="flex max-w-[300px] flex-col space-y-3">
       {error && <div className="error  bg-red-500 text-white rounded-lg  py-3">{error} !</div>}
       {success && <div className="success bg-green-500 py-3 rounded-lg text-white">{success}</div>}
       <label>
