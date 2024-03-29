@@ -47,7 +47,7 @@ const [imageloader, setimageLoader] = useState('Import An Image');
       size: productSize,
     });
     axios
-      .post('https://productapi.vercel.app/api/product', {
+      .post('https://ecommerce-api-wheat.vercel.app/api/product', {
         title: productName,
         description: productDescription,
         price: productPrice,

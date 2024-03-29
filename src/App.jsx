@@ -4,7 +4,7 @@ import './App.css';
 import ProductUploadForm from './ProductUpload';
 
 function getData(setproducts) {
-  axios.get('https://productapi.vercel.app/api/product').then((response) => {
+  axios.get('https://ecommerce-api-wheat.vercel.app/api/product').then((response) => {
     setproducts(response.data);
   });
 }
@@ -16,7 +16,7 @@ function App() {
     getData(setproducts);
   }, [products]);
   async function handledelete(id) {
-    axios.delete(`https://productapi.vercel.app/api/product/${id}`).then((res) => {
+    axios.delete(`https://ecommerce-api-wheat.vercel.app/api/product/${id}`).then((res) => {
       console.log(res.data);
       setError(res.data);
     });

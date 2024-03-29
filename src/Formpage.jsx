@@ -14,7 +14,7 @@ export default function Formpage() {
 
   const sendData = async (data) => {
     const res = await axios
-      .post('https://productapi.vercel.app/api/product', {
+      .post('https://ecommerce-api-wheat.vercel.app/api/product', {
         title: data.title,
         size: data.size,
         price: Number(data.price),
